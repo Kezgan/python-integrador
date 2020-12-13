@@ -1,1 +1,1 @@
-# python-integrador
+# Programación Concurrente - Trabajo Práctico Integrador
