@@ -15,5 +15,3 @@ Poner las citas explicitando la o las partes utilizadas y explicando brevemente 
 - La claridad, simpleza, coherencia, honestidad intelectual, ortografía, argumentaciones y producciones propias de la entrega, serán muy tenidas en cuenta.
 
 - Se pueden usar herramientas y/o lenguajes no vistos durante la cursada, pero utilizar lo visto esta perfecto.
-
-La fecha máxima de entrega es el Domingo 13/Dic 23:59 hs.
