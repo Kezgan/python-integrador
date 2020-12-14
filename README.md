@@ -9,4 +9,11 @@ El barman va a su estante de bebidas, prepara la cantidad de tragos que se desea
 
 ## Beneficio/necesidad de la concurrencia
 
-En este caso es necesaria la concurrencia para que los meseros puedan entregar los pedidos de manera rápida y eficaz, y al tener recursos compartidos debemos sincronizarlos para que "funcionen" de forma normal.
+En este caso es necesaria la concurrencia para que los meseros puedan entregar los pedidos de manera rápida y eficaz, y al tener recursos compartidos debemos sincronizar los meseros para que "funcionen" de forma normal, ya que si no llegan a encontrar tragos en la barra deben esperar hasta que hayan.
+
+## Fuente
+
+Para refrescar un poco la memoria utilicé una de las páginas que usamos para la materia: https://medium.com/arquitecturas-concurrentes/arquitecturas-concurrentes-episodio-2-algo-llamado-concurrencia-ab4994870eb1
+
+
+El ejercicio lo pensé por mi cuenta, y la estructura del código fue en base a lo visto en los trabajos prácticos.
