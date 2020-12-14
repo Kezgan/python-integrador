@@ -1,3 +1,6 @@
+# Creo que el problema que hay es que cuando un mesero se pone en espera en la otra vuelta agarra tragos pero recien al final, y creo que debería ser al principio, ya que al estar esperando deberia
+# tener prioridad.
+
 import random
 import threading
 import time
@@ -15,21 +18,23 @@ class Barman(threading.Thread):
         self.name = 'Barman'
         self.monitor = monitor
 
-    def barmanBebidas(self):
+    def barmanTragos(self):
         return random.randint(1, 10)
 
-    def dejarBebidas(self):
-        bebidasAPoner = self.barmanBebidas()
+    def dejarTragos(self):
+        tragosAPoner = self.barmanTragos()
         with self.monitor:
-            for _ in range(bebidasAPoner):
+            logging.info(f'Preparando tragos...')
+            time.sleep(1)
+            for _ in range(tragosAPoner):
                 barra.append(0)
-            logging.info(f'Acabo de dejar en la barra {bebidasAPoner}. El total de bebidas en la barra es de {len(barra)}')
+            logging.info(f'Acabo de dejar en la barra {tragosAPoner}. El total de tragos en la barra es de {len(barra)}')
             self.monitor.notify()
             time.sleep(4)
 
     def run(self):
         while(True):
-            self.dejarBebidas()
+            self.dejarTragos()
 
 class Mesero(threading.Thread):
     def __init__(self, monitor, numero):
@@ -37,23 +42,23 @@ class Mesero(threading.Thread):
         self.name = f'Mesero {numero}'
         self.monitor = monitor
 
-    def meseroBebidas(self):
+    def meseroTragos(self):
         return random.randint(1, 10)
 
-    def agarrarBebidas(self):
-        bebidasASacar = self.meseroBebidas()
+    def agarrarTragos(self):
+        tragosASacar = self.meseroTragos()
         with self.monitor:
-            while len(barra) < bebidasASacar:
-                logging.info(f'No hay suficientes bebidas en la barra. Voy a esperar')
+            while len(barra) < tragosASacar:
+                logging.info(f'No hay suficientes tragos en la barra. Voy a esperar')
                 self.monitor.wait()
-            for _ in range(bebidasASacar):
+            for _ in range(tragosASacar):
                 barra.pop(0)
-            logging.info(f'Agarré {bebidasASacar} bebidas para entregar a los clientes. En la barra quedaron {len(barra)}')
+            logging.info(f'Agarré {tragosASacar} tragos para entregar a los clientes. En la barra quedaron {len(barra)}')
             time.sleep(4)
     
     def run(self):
         while(True):
-            self.agarrarBebidas()
+            self.agarrarTragos()
 
 
 monitor = threading.Condition()
